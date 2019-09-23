@@ -644,6 +644,16 @@ if sys.platform == 'darwin':
     register("chrome", None, MacOSXOSAScript('chrome'), -1)
     register("MacOSX", None, MacOSXOSAScript('default'), -1)
 
+#
+# Platform support for Haiku
+#
+
+if sys.platform[:5] == "haiku":
+    # First try to use the default configured browser
+    register("haiku-default", None, GenericBrowser("open"))
+    # Fall back to WebPositive as the standard browser of Haiku
+    register("webpositive", None, BackgroundBrowser("WebPositive"))
+
 
 #
 # Platform support for OS/2
